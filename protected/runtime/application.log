@@ -298,3 +298,21 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/mailing-contact/js/popper.min.js.map
 ---
+2020/02/13 02:48:10 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/main.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/main.css')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\mailing-contact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/mailing-contact/css/main.css
+HTTP_REFERER=http://localhost/mailing-contact/
+---
+2020/02/13 02:48:10 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "css/form.css". in C:\xampp\htdocs\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 C:\xampp\htdocs\yii\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\mailing-contact\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/mailing-contact/css/form.css
+HTTP_REFERER=http://localhost/mailing-contact/
+---
