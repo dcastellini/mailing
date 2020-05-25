@@ -29,7 +29,13 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		if (!isset(Yii::app()->session['usuario'])){
+			$this->redirect('../site/login');
+		} else {
+			$this->render('index');
+		}
+
+
 	}
 
 	/**
@@ -79,16 +85,18 @@ class SiteController extends Controller
 	{
         $model = new LoginForm();
         //
+		if (isset(Yii::app()->session['usuario'])){
+				$this->redirect('../site/index');
+		}
+
+		//
         if (isset($_POST['usuario']) && isset($_POST['password']))
         {
-            $model->username = $_POST['usuario'];
+			$model->usuario = $_POST['usuario'];
             $model->password = $_POST['password'];
-            $usuario = Usuario::model()->findByAttributes(array('usuario'=>$model->username));
-
-            // validate user input and redirect to the previous page if valid
+            $usuario = Usuario::model()->findByAttributes(array('usu_usuario'=>$model->usuario));
 
             if ($model->login()){
-                // ...log in the user and redirect
                 Yii::app()->session->open();
                 Yii::app()->session['usuario'] = Yii::app()->user->id;
                 echo Yii::app()->request->baseUrl . "/site/index";
@@ -106,6 +114,6 @@ class SiteController extends Controller
 	public function actionLogout()
 	{
 		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
+		$this->redirect('../site/login');
 	}
 }

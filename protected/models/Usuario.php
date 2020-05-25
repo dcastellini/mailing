@@ -4,13 +4,13 @@
  * This is the model class for table "usuario".
  *
  * The followings are the available columns in table 'usuario':
- * @property string $usuario
- * @property string $password
- * @property string $email
- * @property string $usu_creacion
- * @property string $fhcreacion
- * @property string $usu_modif
- * @property string $fhmodif
+ * @property string $usu_usuario
+ * @property string $usu_password
+ * @property string $usu_email
+ * @property string $usu_ucreacion
+ * @property string $usu_fhcreacion
+ * @property string $usu_umodif
+ * @property string $usu_fhmodif
  */
 class Usuario extends CActiveRecord
 {
@@ -30,13 +30,12 @@ class Usuario extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('usuario, password, email, usu_creacion, fhcreacion, usu_modif', 'required'),
-			array('usuario, usu_creacion, usu_modif', 'length', 'max'=>50),
-			array('password, email', 'length', 'max'=>200),
-			array('fhmodif', 'safe'),
+			array('usu_usuario, usu_password, usu_email, usu_ucreacion, usu_fhcreacion, usu_umodif', 'required'),
+			array('usu_usuario, usu_password, usu_email, usu_ucreacion, usu_umodif', 'length', 'max'=>50),
+			array('usu_fhmodif', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('usuario, password, email, usu_creacion, fhcreacion, usu_modif, fhmodif', 'safe', 'on'=>'search'),
+			array('usu_usuario, usu_password, usu_email, usu_ucreacion, usu_fhcreacion, usu_umodif, usu_fhmodif', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,13 +56,13 @@ class Usuario extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'usuario' => 'Usuario',
-			'password' => 'Password',
-			'email' => 'Email',
-			'usu_creacion' => 'Usu Creacion',
-			'fhcreacion' => 'Fhcreacion',
-			'usu_modif' => 'Usu Modif',
-			'fhmodif' => 'Fhmodif',
+			'usu_usuario' => 'Usu Usuario',
+			'usu_password' => 'Usu Password',
+			'usu_email' => 'Usu Email',
+			'usu_ucreacion' => 'Usu Ucreacion',
+			'usu_fhcreacion' => 'Usu Fhcreacion',
+			'usu_umodif' => 'Usu Umodif',
+			'usu_fhmodif' => 'Usu Fhmodif',
 		);
 	}
 
@@ -85,13 +84,13 @@ class Usuario extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('usuario',$this->usuario,true);
-		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email',$this->email,true);
-		$criteria->compare('usu_creacion',$this->usu_creacion,true);
-		$criteria->compare('fhcreacion',$this->fhcreacion,true);
-		$criteria->compare('usu_modif',$this->usu_modif,true);
-		$criteria->compare('fhmodif',$this->fhmodif,true);
+		$criteria->compare('usu_usuario',$this->usu_usuario,true);
+		$criteria->compare('usu_password',$this->usu_password,true);
+		$criteria->compare('usu_email',$this->usu_email,true);
+		$criteria->compare('usu_ucreacion',$this->usu_ucreacion,true);
+		$criteria->compare('usu_fhcreacion',$this->usu_fhcreacion,true);
+		$criteria->compare('usu_umodif',$this->usu_umodif,true);
+		$criteria->compare('usu_fhmodif',$this->usu_fhmodif,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
